@@ -33,6 +33,15 @@ abstract class BaseVideoWidget : TowerWidget() {
                 Timber.d("Starting video stream with tag %s from udp port %d", tag, udpPort)
                 CameraApi.getApi(drone).startVideoStream(surface, tag, bundle, listener)
             }
+
+            WidgetVideoPreferences.SKYVIPER_VIDEO_TYPE -> {
+                val udpPort = 554
+                val bundle = Bundle()
+                bundle.putInt(CameraApi.VIDEO_PROPS_UDP_PORT, 554)
+
+                Timber.d("Starting video stream with tag %s from udp port %d", tag, udpPort)
+                CameraApi.getApi(drone).startVideoStream(surface, tag, bundle, listener)
+            }
         }
     }
 
@@ -46,6 +55,11 @@ abstract class BaseVideoWidget : TowerWidget() {
             }
 
             WidgetVideoPreferences.CUSTOM_VIDEO_TYPE -> {
+                Timber.d("Stopping video stream with tag %s", tag)
+                CameraApi.getApi(drone).stopVideoStream(tag, listener)
+            }
+
+            WidgetVideoPreferences.SKYVIPER_VIDEO_TYPE -> {
                 Timber.d("Stopping video stream with tag %s", tag)
                 CameraApi.getApi(drone).stopVideoStream(tag, listener)
             }

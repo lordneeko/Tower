@@ -21,6 +21,20 @@
         android:background="@android:color/darker_gray"/>
 
     <RadioButton
+        android:id="@+id/skyviper_video_stream_check"
+        android:layout_width="match_parent"
+        android:background="?android:attr/selectableItemBackground"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:text="Skyviper video stream"/>
+
+    <View
+        android:layout_height="1px"
+        android:layout_width="match_parent"
+        android:layout_margin="5dp"
+        android:background="@android:color/darker_gray"/>
+
+    <RadioButton
         android:id="@+id/custom_video_stream_check"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

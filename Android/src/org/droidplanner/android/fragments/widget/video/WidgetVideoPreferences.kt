@@ -25,9 +25,10 @@ class WidgetVideoPreferences : DialogFragment() {
     companion object {
         const val SOLO_VIDEO_TYPE = 0
         const val CUSTOM_VIDEO_TYPE = 1
+        const val SKYVIPER_VIDEO_TYPE = 2
     }
 
-    @IntDef(SOLO_VIDEO_TYPE.toLong(), CUSTOM_VIDEO_TYPE.toLong())
+    @IntDef(SOLO_VIDEO_TYPE.toLong(), CUSTOM_VIDEO_TYPE.toLong(), SKYVIPER_VIDEO_TYPE.toLong())
     @Retention(AnnotationRetention.SOURCE)
     annotation class VideoType
 
@@ -91,6 +92,11 @@ class WidgetVideoPreferences : DialogFragment() {
                     appPrefs.videoWidgetType = SOLO_VIDEO_TYPE
                 }
 
+                R.id.skyviper_video_stream_check -> {
+                    udpPortView?.isEnabled = false
+                    appPrefs.videoWidgetType = SKYVIPER_VIDEO_TYPE
+                }
+
                 R.id.custom_video_stream_check -> {
                     udpPortView?.isEnabled = true
                     appPrefs.videoWidgetType = CUSTOM_VIDEO_TYPE
@@ -102,6 +108,7 @@ class WidgetVideoPreferences : DialogFragment() {
         when(currentVideoType){
             SOLO_VIDEO_TYPE -> radioGroup?.check(R.id.solo_video_stream_check)
             CUSTOM_VIDEO_TYPE -> radioGroup?.check(R.id.custom_video_stream_check)
+            SKYVIPER_VIDEO_TYPE -> radioGroup?.check(R.id.skyviper_video_stream_check)
         }
     }
 }
